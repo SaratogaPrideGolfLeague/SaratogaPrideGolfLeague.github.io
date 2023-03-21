@@ -1,0 +1,202 @@
+<!--Use this to edit the calender
+<div style="text-align:center; font-size:20px; padding-top:40px;">Edwards Birthday blah blah blah blah blah blah blah</div>-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta content="Pride_Golf.png" alt="Logo">
+    <title>Saratoga Pride Golf League - Scores</title>
+    <link rel="stylesheet" href="Basic.css">
+    <link rel="stylesheet" href="delete_after_css.css">
+    <style>
+      .arrow {
+		    display: inline-block;
+		    width: 0;
+			  height: 0;
+		    border-style: solid;
+		    border-width: 5px 5px 0 5px;
+		    border-color: #555 transparent transparent transparent;
+			  margin: 0 10px;
+		    cursor: pointer;
+	    }
+	    .left-arrow {
+			  transform: rotate(90deg);
+		  }
+	    .right-arrow {
+		    transform: rotate(-90deg);
+	    }
+      .date-cell {
+        text-align: left;
+      }
+      .cell {
+        text-align: left;
+      }
+      td > p {
+        text-align: center;
+        font-size: 20px;
+			  padding-top: 30px;
+      }
+		  .center-scroll {
+  		  display: flex;
+  		  justify-content: center;
+    		align-items: center;
+		  }
+		  .center-scroll div {
+  		  display: flex;
+  		  align-items: center;
+			  font-size: 24px;
+		  }
+	    td.has-event:hover::after {
+			  content: attr(title);
+  			display: flex;
+    	  justify-content: center;
+    	  align-items: center;
+  		  background-color: #fff;
+			  padding: 5px;
+  			border: 1px solid #ccc;
+  		  border-radius: 5px;
+  		  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  		  z-index: 1;
+        position: absolute;
+		  }
+		  .event-title {
+  		  margin: 0;
+	    }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul class="nav-tabs">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Golf_League_Registration.html">Register</a></li>
+        <li><a href="Golf_Scores_2023.html">Scores</a></li>
+        <li><a href="Golf_Events.html">Events</a></li>
+        <div class="dropdown">
+          <a href="#">Contact Info</a>
+          <div class="dropdown-content">
+            <p>saratogapridegolfleague@gmail.com</p>
+            <p>(518)-932-1566</p>
+          </div>
+        </div>
+      </ul>
+    </nav>
+    <header>
+      <h1> League Events </h1>
+    </header>
+    <section id="events">
+      <center>
+        <form action="Golf_League_Event_submission.html">
+          <input type="submit" value="Submit an Event Request Here!" style="padding: 10px 20px; background-color: rgb(104,139,56); text-decoration:none; color:white; border:none; border-radius:5px; cursor:pointer;">
+        </form>
+      </center><br><br>
+      <div class="center-scroll">
+		<div style="padding-bottom: 25px;">
+			<span class="arrow left-arrow" onclick="previousMonth()"></span>
+			<span id="month-year"></span>
+			<span class="arrow right-arrow" onclick="nextMonth()"></span>
+		</div>
+	</div>
+	<table id="calendar">
+		<thead>
+			<tr>
+			    <th style="background-color:#ff0000">Sun</th>
+                <th style="background-color:#ff8000">Mon</th>
+                <th style="background-color:#ffff00">Tue</th>
+                <th style="background-color:#00ff00">Wed</th>
+                <th style="background-color:#00ffff">Thu</th>
+                <th style="background-color:#0000ff">Fri</th>
+                <th style="background-color:#8000ff">Sat</th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+	<script>
+		// Initialize calendar with current month
+		let currentDate = new Date();
+		let currentMonth = currentDate.getMonth();
+		let currentYear = currentDate.getFullYear();
+		showCalendar(currentMonth, currentYear);
+        
+		// Update calendar to show previous month
+		function previousMonth() {
+			currentMonth--;
+			if (currentMonth < 0) {
+				currentMonth = 11;
+				currentYear--;
+			}
+			showCalendar(currentMonth, currentYear);
+		}
+
+		// Update calendar to show next month
+		function nextMonth() {
+			currentMonth++;
+			if (currentMonth > 11) {
+				currentMonth = 0;
+				currentYear++;
+			}
+			showCalendar(currentMonth, currentYear);
+		}
+        
+		// Show calendar for given month and year
+		function showCalendar(month, year) {
+			let daysInMonth = new Date(year, month + 1, 0).getDate();
+			let firstDayOfMonth = new Date(year, month, 1).getDay();
+			let tbody = document.querySelector("#calendar tbody");
+			tbody.innerHTML = "";
+
+			// Set month and year in header
+			let monthYear = document.querySelector("#month-year");
+			monthYear.innerHTML = new Intl.DateTimeFormat("en-US", {
+				month: "long",
+				year: "numeric"
+			}).format(new Date(year, month, 1));
+
+            // Populate calendar with dates
+            let date = 1;
+            let numRow = Math.ceil((daysInMonth + firstDayOfMonth) /7);
+            for (let i = 0; i < numRow; i++) {
+                let row = document.createElement("tr");
+                if (i === 0) {
+                    let dateCell = document.createElement("td");
+                    dateCell.classList.add("date-cell");
+                    dateCell.innerHTML = monthYear.innerHTML.split(" ")[0];
+                }
+                for (let j = 0; j < 7; j++) {
+                    let cell = document.createElement("td");
+                    if (i === 0 && j < firstDayOfMonth) {
+                        cell.innerHTML = "";
+                    } else if (date > daysInMonth) {
+                        //break;
+                        cell.innerHTML = "";
+                    } else {
+                        cell.innerHTML = date;
+                        // Add Events Here
+                        // 2023 Events
+                        if (date === 25 && month === 3 && year === 2023 ) {
+                            //cell.innerHTML += "<br><p>Dinner party</p>";
+							cell.innerHTML += '<br><p class="event-title">Dinner party</p>';
+							cell.setAttribute('title', 'Dinner Party 5pm at Chilis');
+							cell.classList.add('has-event');
+                        }
+                        if (date === currentDate.getDate() && year === currentDate.getFullYear() && month === currentDate.getMonth()) {
+                            cell.classList.add("today");
+                        }
+                        date++;
+                    }
+                    row.appendChild(cell);
+                }
+                tbody.appendChild(row);
+            }
+        }
+    </script>
+    <br><br>
+      </section>    
+      <footer>
+        <a href="https://www.facebook.com/groups/715451413235425"><img src="Pride_Golf.png" width="67" height="67" style="margin-right:20px"></a>
+      <a href="https://www.saratogaspagolf.com"><img src="logo_SSGC.png" alt="Saratoga Spa Golf Course" width="100" height="67" style="margin-left:20px"></a>
+        <p>&copy; 2023 Saratoga Pride Golf League</p>
+      </footer>
+  </body>
+</html>
