@@ -1,0 +1,198 @@
+/* =======================================================================
+Template Name: Youtubers
+Author:  SmartEye Technologies
+Author URI: www.smarteyeapps.com
+Version: 1.0
+coder name:Prabin Raja
+Description: This Template is created for Youtubers
+======================================================================= */
+
+/* ===================================== Import Variables ================================== */
+@import 'variable';
+/* ===================================== Basic CSS ==================================== */
+@import 'base/basic_setup';
+
+/* ===================================== Basic CSS ==================================== */
+@import 'base/bootstrap';
+
+
+.max-230{
+    max-width: 230px;
+}
+
+
+
+.slid-container{
+    background-image: url('../images/bg.jpg');
+    background-size: 100%;
+    height: 100%;
+    
+    @media screen and (max-width: 991px) {
+        height: auto;
+    }
+    .inner-lay{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgb(0,0,0, 0.5);
+         height: 100%;
+         @media screen and (max-width: 991px) {
+            height: auto;
+             position: relative;
+             padding-bottom: 50px;
+        }
+    }
+}
+
+.pagecc{
+    background-image: url('../images/bg.jpg');
+    background-size: 100%;
+    background-position: center; 
+    .inner-lay{
+         background-color: rgb(0,0,0, 0.6);
+        width: 100%;
+        height: 100%;
+    }
+}
+
+
+
+footer{
+   
+    .inner{
+        background-color: #2a312c;
+        @include big-padding();
+        color: #ccc;
+        font-size: .9rem;
+        h4{
+            color: #FFF;
+           
+            font-weight: 600;
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+        }
+        .foot-about{
+            p{
+                margin-bottom: 30px;
+            }
+        }
+        .foot-post{
+            .post-row{
+                display: flex;
+                margin-bottom: 10px;
+                .image{
+                     
+                    img{
+                       width: 120px;
+                    }
+                }
+                .detail{
+                    flex-grow: 1;
+                    padding-left: 5px;
+                    
+                    p{
+                        font-size: .8rem;
+                        margin-top: -5px;
+                    }
+                }
+            }
+        }
+        .foot-services{
+            ul{
+                li{
+                    padding: 5px;
+                    font-size: .95rem;
+                    a{
+                        color: #ccc;
+                    }
+                }
+            }
+        }
+        .foot-news{
+            p{
+               margin-bottom: 20px; 
+            }
+            .input-group{
+                border-radius: 0px;
+                input{
+                    border-radius: 0px;
+                }
+                .input-group-append{
+                    border-radius: 0px;
+                    background-color: #FFF;
+                }
+            }
+            ul{
+                li{
+                    float: left;
+                    padding: 10px;
+                    i{
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.copy{
+        padding: 20px;
+        background-color: #364039;
+        color: #FFF;
+    a{
+        color: #FFF;
+    }
+    span{
+        float: right;
+        i{
+            margin-right: 20px;
+        }
+    }
+}
+
+
+@media screen and (max-width: 767px) {
+    .mul{
+        width: 100%;
+    }
+    .dfr{
+        font-size: 2.5rem;
+    }
+    .bhgh{
+        margin-bottom: 10px;
+        width: 100%;
+        margin-left: 0px !important;
+    }
+}
+
+
+.fs-12{
+    font-size: 5.5rem;
+    @media screen and (max-width: 991px) {
+        font-size: 3.5rem;
+    }
+    @media screen and (max-width: 767px) {
+        font-size: 2.5rem;
+    }
+}
+.slidcont{
+    padding-top: 120px;
+    @media screen and (max-width: 991px) {
+        padding-top: 50px;
+    }
+}
+
+.whats-in-club{
+    background-image: url('../images/bg2.jpg');
+    background-size: 100%;
+    
+    .inndet{
+        background-color: rgba(0,0,0,0.5);
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.coverfac{
+    background-color: rgba(51,77,63,.9);
+}
